@@ -1,5 +1,4 @@
 import sys
-import ConfigParser
 import os.path
 import time
 import sqlite3
@@ -10,8 +9,6 @@ from flask import Flask, g, render_template
 # import all the local functions
 from createSerialNumber import createSerialNumber
 from acl import checkAcl
-
-config = ConfigParser.SafeConfigParser()
 
 # configure the app
 app = Flask("tinkermillWebApi")
@@ -115,6 +112,15 @@ def checkAccess(deviceId=None, memberId=None, serialNumber=None):
     log(deviceId, memberId, "Denined Access : No Access found")       
     return json.dumps({'status': False, 'message': "No Access found."})
 
+@app.route("/list/members")
+def listMembers():
+    mlist = query_db("select * from member")
+    return render_template('memberList.html', mlist=mlist)
+    
+@app.route("/create/member/" , methods=['POST'])
+def createMember():
+    pass
+
 @app.route("/update/member/" ,  methods=['POST'])
 def updateMember():
     """take a cmd structure to update a member
@@ -149,11 +155,5 @@ def index():
 
 
 if __name__ == '__main__':
-    
-    # read configuration file
-    if os.path.isfile("run.cfg"):
-        config.read('run.cfg')
-        # config.get[Float/Int/Boolean]('config1', 'varname')
- 
     app.run()
 
