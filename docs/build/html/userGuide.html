@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>User guide &mdash; Tinkermill Api 0.01 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.01',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Tinkermill Api 0.01 documentation" href="index.html" />
+    <link rel="next" title="Developer Guide" href="developerGuide.html" />
+    <link rel="prev" title="Welcome to Tinkermill Api’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="developerGuide.html" title="Developer Guide"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Tinkermill Api’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Tinkermill Api 0.01 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="user-guide">
+<h1>User guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
+<p>How the end user can use the API</p>
+<span class="target" id="module-webApi"></span><dl class="function">
+<dt id="webApi.checkAccess">
+<tt class="descclassname">webApi.</tt><tt class="descname">checkAccess</tt><big>(</big><em>deviceId=None</em>, <em>memberId=None</em><big>)</big><a class="headerlink" href="#webApi.checkAccess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return if user has access to current device</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>deviceId (int):  The ID of the device
+memberId (int):  The ID of the member</dd>
+<dt>Returns:</dt>
+<dd><p class="first">JSON  The return code:</p>
+<div class="last highlight-python"><div class="highlight"><pre>{status: true, message: &quot;Success&quot; } -- Success!
+{status: false, message: &quot;fail reason&quot; } -- No good.
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="section" id="sample-code">
+<h2>Sample Code<a class="headerlink" href="#sample-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">here</span> <span class="nx">is</span> <span class="nx">some</span> <span class="nx">crappy</span> <span class="nx">javascript</span><span class="p">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">User guide</a><ul>
+<li><a class="reference internal" href="#sample-code">Sample Code</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Tinkermill Api&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="developerGuide.html"
+                        title="next chapter">Developer Guide</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/userGuide.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="developerGuide.html" title="Developer Guide"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Tinkermill Api’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">Tinkermill Api 0.01 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, poepping.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>

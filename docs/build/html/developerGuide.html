@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Developer Guide &mdash; Tinkermill Api 0.01 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.01',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Tinkermill Api 0.01 documentation" href="index.html" />
+    <link rel="prev" title="User guide" href="userGuide.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="userGuide.html" title="User guide"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Tinkermill Api 0.01 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="developer-guide">
+<h1>Developer Guide<a class="headerlink" href="#developer-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>here are the instructions for installing the api and getting it up and running</p>
+<div class="section" id="python-modules">
+<h3>Python modules<a class="headerlink" href="#python-modules" title="Permalink to this headline">¶</a></h3>
+<p>get the lastest pip:</p>
+<div class="highlight-python"><div class="highlight"><pre>pip install https://github.com/mitsuhiko/flask/tarball/master
+</pre></div>
+</div>
+</div>
+<div class="section" id="database-setup">
+<h3>Database setup<a class="headerlink" href="#database-setup" title="Permalink to this headline">¶</a></h3>
+<p>to create a new database or to clear out the current database:</p>
+<div class="highlight-python"><div class="highlight"><pre>flask -a webApi.py init_db
+</pre></div>
+</div>
+</div>
+<div class="section" id="helpful-links">
+<h3>Helpful links<a class="headerlink" href="#helpful-links" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://www.youtube.com/watch?feature=player_embedded&amp;v=oJsUvBQyHBs">https://www.youtube.com/watch?feature=player_embedded&amp;v=oJsUvBQyHBs</a></li>
+<li><a class="reference external" href="http://sphinx-doc.org/man/sphinx-apidoc.html">http://sphinx-doc.org/man/sphinx-apidoc.html</a></li>
+<li><a class="reference external" href="http://pylonsbook.com/en/1.0/documentation.html">http://pylonsbook.com/en/1.0/documentation.html</a></li>
+<li><a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickref.html">http://docutils.sourceforge.net/docs/user/rst/quickref.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="module-webApi">
+<span id="notes-to-developers"></span><h1>Notes to developers<a class="headerlink" href="#module-webApi" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="webApi.checkAccess">
+<tt class="descclassname">webApi.</tt><tt class="descname">checkAccess</tt><big>(</big><em>deviceId=None</em>, <em>memberId=None</em><big>)</big><a class="headerlink" href="#webApi.checkAccess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return if user has access to current device</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>deviceId (int):  The ID of the device
+memberId (int):  The ID of the member</dd>
+<dt>Returns:</dt>
+<dd><p class="first">JSON  The return code:</p>
+<div class="last highlight-python"><div class="highlight"><pre>{status: true, message: &quot;Success&quot; } -- Success!
+{status: false, message: &quot;fail reason&quot; } -- No good.
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Developer Guide</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a><ul>
+<li><a class="reference internal" href="#python-modules">Python modules</a></li>
+<li><a class="reference internal" href="#database-setup">Database setup</a></li>
+<li><a class="reference internal" href="#helpful-links">Helpful links</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-webApi">Notes to developers</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="userGuide.html"
+                        title="previous chapter">User guide</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/developerGuide.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="userGuide.html" title="User guide"
+             >previous</a> |</li>
+        <li><a href="index.html">Tinkermill Api 0.01 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, poepping.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
+    </div>
+  </body>
+</html>
