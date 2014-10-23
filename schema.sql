@@ -20,14 +20,16 @@ create table member (
   gaurdianName text,
   startDate integer,
   roleId integer,
-  passwordHash text not null
+  passwordHash text not null,
+  badgeSerialNumber text
 );
 
-insert into member ('membership_id', 'firstName','lastName','companyName','email',
+insert into member ('id','membership_id', 'firstName','lastName','companyName','email',
 'phone','emergencyPhone','emergencyName','emergencyEmail','accountDisabled',
-'isMinor', 'startDate', 'roleId','passwordHash') VALUES
-(0,'root','admin', 'tinkermill','admin@tinkermill.org','000-000-0000',
-'noPhone','noName','noEmail',0, 0, CURRENT_TIMESTAMP, 0, '' );
+'isMinor', 'startDate', 'roleId','passwordHash', 'badgeSerialNumber') VALUES
+(0,0,'root','admin', 'tinkermill','admin@tinkermill.org','000-000-0000',
+'noPhone','noName','noEmail',0, 0, CURRENT_TIMESTAMP, 0, '', 'a2f49dk3' );
+
 
 create table membership (
   id integer primary key autoincrement,
