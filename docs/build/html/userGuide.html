@@ -57,12 +57,13 @@
 <p>How the end user can use the API</p>
 <span class="target" id="module-webApi"></span><dl class="function">
 <dt id="webApi.checkAccess">
-<tt class="descclassname">webApi.</tt><tt class="descname">checkAccess</tt><big>(</big><em>deviceId=None</em>, <em>memberId=None</em><big>)</big><a class="headerlink" href="#webApi.checkAccess" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">webApi.</tt><tt class="descname">checkAccess</tt><big>(</big><em>deviceId=None</em>, <em>memberId=None</em>, <em>serialNumber=None</em><big>)</big><a class="headerlink" href="#webApi.checkAccess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return if user has access to current device</p>
 <dl class="docutils">
 <dt>Args:</dt>
 <dd>deviceId (int):  The ID of the device
-memberId (int):  The ID of the member</dd>
+memberId (int):  The ID of the member
+serialNumber (string) : the Serial number on the badge</dd>
 <dt>Returns:</dt>
 <dd><p class="first">JSON  The return code:</p>
 <div class="last highlight-python"><div class="highlight"><pre>{status: true, message: &quot;Success&quot; } -- Success!

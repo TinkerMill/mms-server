@@ -56,7 +56,8 @@
 <div class="section" id="python-modules">
 <h3>Python modules<a class="headerlink" href="#python-modules" title="Permalink to this headline">¶</a></h3>
 <p>get the lastest pip:</p>
-<div class="highlight-python"><div class="highlight"><pre>pip install https://github.com/mitsuhiko/flask/tarball/master
+<div class="highlight-python"><div class="highlight"><pre>* pip install https://github.com/mitsuhiko/flask/tarball/master
+* pip install sqlite3
 </pre></div>
 </div>
 </div>
@@ -66,6 +67,12 @@
 <div class="highlight-python"><div class="highlight"><pre>flask -a webApi.py init_db
 </pre></div>
 </div>
+</div>
+<div class="section" id="building-the-docs">
+<h3>Building the docs<a class="headerlink" href="#building-the-docs" title="Permalink to this headline">¶</a></h3>
+<p>To rebuild the documentation go into the docs directory and run the make.bat
+or if you are unix you can run make and just build with the makefile in
+that directory</p>
 </div>
 <div class="section" id="helpful-links">
 <h3>Helpful links<a class="headerlink" href="#helpful-links" title="Permalink to this headline">¶</a></h3>
@@ -82,12 +89,32 @@
 <span id="notes-to-developers"></span><h1>Notes to developers<a class="headerlink" href="#module-webApi" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="webApi.checkAccess">
-<tt class="descclassname">webApi.</tt><tt class="descname">checkAccess</tt><big>(</big><em>deviceId=None</em>, <em>memberId=None</em><big>)</big><a class="headerlink" href="#webApi.checkAccess" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">webApi.</tt><tt class="descname">checkAccess</tt><big>(</big><em>deviceId=None</em>, <em>memberId=None</em>, <em>serialNumber=None</em><big>)</big><a class="headerlink" href="#webApi.checkAccess" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return if user has access to current device</p>
 <dl class="docutils">
 <dt>Args:</dt>
 <dd>deviceId (int):  The ID of the device
-memberId (int):  The ID of the member</dd>
+memberId (int):  The ID of the member
+serialNumber (string) : the Serial number on the badge</dd>
+<dt>Returns:</dt>
+<dd><p class="first">JSON  The return code:</p>
+<div class="last highlight-python"><div class="highlight"><pre>{status: true, message: &quot;Success&quot; } -- Success!
+{status: false, message: &quot;fail reason&quot; } -- No good.
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="webApi.processData">
+<tt class="descclassname">webApi.</tt><tt class="descname">processData</tt><big>(</big><big>)</big><a class="headerlink" href="#webApi.processData" title="Permalink to this definition">¶</a></dt>
+<dd><p>take a cmd structure to update a table. see the testData.html
+in the static folder to see how to send valid data to this endpoint.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>cmd  : is this new or an update
+table: the table to modify</dd>
 <dt>Returns:</dt>
 <dd><p class="first">JSON  The return code:</p>
 <div class="last highlight-python"><div class="highlight"><pre>{status: true, message: &quot;Success&quot; } -- Success!
@@ -112,6 +139,7 @@ memberId (int):  The ID of the member</dd>
 <li><a class="reference internal" href="#installation">Installation</a><ul>
 <li><a class="reference internal" href="#python-modules">Python modules</a></li>
 <li><a class="reference internal" href="#database-setup">Database setup</a></li>
+<li><a class="reference internal" href="#building-the-docs">Building the docs</a></li>
 <li><a class="reference internal" href="#helpful-links">Helpful links</a></li>
 </ul>
 </li>

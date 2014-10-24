@@ -4,11 +4,13 @@ import time
 import sqlite3
 import json
 
-from flask import Flask, g, render_template
+from flask import Flask, g, render_template, request
 
 # import all the local functions
 from createSerialNumber import createSerialNumber
 from acl import checkAcl
+from newMember import newMember
+from updateMember import updateMember
 
 # configure the app
 app = Flask("tinkermillWebApi")
@@ -121,12 +123,14 @@ def listMembers():
 def createMember():
     pass
 
-@app.route("/update/member/" ,  methods=['POST'])
-def updateMember():
-    """take a cmd structure to update a member
+@app.route("/processData" ,  methods=['POST'])
+def processData():
+    """take a cmd structure to update a table. see the testData.html
+    in the static folder to see how to send valid data to this endpoint.
 
     Args:
-       cmd : a JSON request that contains the actions to perform on the user
+       cmd  : is this new or an update
+       table: the table to modify
        
     Returns:
        JSON  The return code::
@@ -135,16 +139,24 @@ def updateMember():
           {status: false, message: "fail reason" } -- No good.
           
     """
-    # load the cmd structure into a python objec to work with
-    cmd=json.loads(request.form['cmd'])
     
+    dataStruct   = request.form
+    cmd   = dataStruct['cmd']
+    table = dataStruct['table']
+    response = '{status: false, message: "no valid path" }'
+ 
     # if acl check does not return true then fail to make the update
-    if not checkAcl(cmd):
+    if not checkAcl(dataStruct['username'], dataStruct['passwordHash'] , cmd, table, get_db()):
         print cmd
         return '{status: false, message: "ACL Fail Check" }'
     
+    if cmd == "new" and table == "member":
+        response = newMember(dataStruct, get_db() )
     
-    return '{status: false, message: "fail reason" }'
+    if cmd == "update" and table == "member":
+        response = updateMember(dataStruct, get_db() )
+    
+    return response
 
 @app.route("/")
 def index():

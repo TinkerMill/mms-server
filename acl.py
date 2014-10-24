@@ -1,2 +1,2 @@
-def checkAcl(data):
-    return true
+def checkAcl(username, passwordHash,cmd, table,db):
+    return True
