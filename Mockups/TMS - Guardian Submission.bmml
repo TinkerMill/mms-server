@@ -1,0 +1,34 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="832" measuredH="536" mockupW="832" mockupH="536">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="0" w="832" h="536" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>TinkerMill%20Management%20System%0Ahttp%3A//www.tinkermill.org</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::MenuBar" x="1" y="72" w="800" h="29" measuredW="331" measuredH="29" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Membership%2C%20Education%2C%20Administration%2C%20Help</text>
+      </controlProperties>
+    </control>
+    <control controlID="66" controlTypeID="com.balsamiq.mockups::Button" x="528" y="266" w="-1" h="-1" measuredW="64" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Submit</text>
+      </controlProperties>
+    </control>
+    <control controlID="79" controlTypeID="com.balsamiq.mockups::Paragraph" x="172" y="147" w="420" h="104" measuredW="275" measuredH="80" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Asa%20minor%2C%20you%20need%20to%20have%20a%20legal%20guardian%20sign%20the%20membership%20agreement%20on%20your%20behalf.%0A%20%0APlease%20download%20and%20print%20the%20attached%20Membership%20Agreement%20%28For%20Minors%29%20and%20have%20a%20legal%20guardian%20sign%20it.%20Bring%20the%20signed%20document%20to%20TinkerMill%20and%20return%20it%20to%20the%20front%20desk%20at%20TinkerMill.%0A%20%0AYour%20membership%20will%20be%20become%20active%20once%20the%20form%20is%20received%20by%20TinkerMill.</text>
+      </controlProperties>
+    </control>
+    <control controlID="87" controlTypeID="com.balsamiq.mockups::TitleWindow" x="157" y="109" w="450" h="222" measuredW="450" measuredH="400" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Membership%20Agreement%20for%20Minors</text>
+      </controlProperties>
+    </control>
+    <control controlID="88" controlTypeID="com.balsamiq.mockups::Link" x="172" y="270" w="-1" h="-1" measuredW="205" measuredH="19" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>https%3A//docs.google.com/document</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
