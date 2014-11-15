@@ -18,7 +18,9 @@ Installation
 
 1. Load the schema into the database.
 
-1. Install python flask.
+1. Install python flask and friends.
  * `apt-get install python-flask`
  * `apt-get install python-sqlalchemy`
+ * `apt-get install python-flask-login`
+ * `apt-get install python-flask-sqlalchemy`
 

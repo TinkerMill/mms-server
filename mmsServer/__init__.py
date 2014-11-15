@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# mms.py
+
 import sys
 import os.path
 import time
@@ -6,7 +9,7 @@ import json
 
 from flask import Flask, g, render_template, request
 
-# import all the local functions
+# Import all the local functions
 from createSerialNumber import createSerialNumber
 from acl import checkAcl
 from newMember import newMember
