@@ -1,0 +1,100 @@
+<!-- Polymer Imports -->
+<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html" />
+<link rel="import" href="member-info-form.html" />
+
+<polymer-element name="page-register">
+
+<!-- Polymer Element Template-->
+<template>
+    <style>
+    :host {
+      display: block;
+      position: relative;
+      background-color: white;
+      padding: 20px;
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+    
+    label {
+        margin-right: 10px;
+    }
+    </style>
+ 
+    <h2>Apply for Membership</h2>
+    
+    <label for="membership_type">Membership Type</label>
+    <paper-dropdown-menu id="membership_type" selected="Individual" valueattr="label" on-core-select="{{changedMembershipType}}">
+        <paper-item label="Individual"></paper-item>
+        <paper-item label="Family"></paper-item>
+        <paper-item label="Starving Student"></paper-item>
+    </paper-dropdown-menu>
+    
+    <div id="membership_info">
+        <p>Dues: <span id="membership_dues"></span></p>
+        <p><span id="membership_description"></span></p> 
+    </div>
+    
+    <member-info-form id="primary_member_info" primary>
+        <h3>Primary Member</h3>
+    </member-info-form>
+    
+    <div id="additional_members">
+        <h3>Additional Members</h3>
+        
+        <div id="additional_member_info"></div>
+        
+        <paper-button id="additional_member_button" on-tap="{{addMember}}">+ Add a member</paper-button>
+    </div>
+    
+    <paper-button id="next_button" raised>Next ></paper-button>
+</template>
+
+<!-- Polymer Element Script -->
+<script>
+    Polymer( 'page-register', {
+        ready: function() {
+        },
+        changedMembershipType: function() {
+            var menu = this.$.membership_type;
+            var dues = this.$.membership_dues;
+            var desc = this.$.membership_description;
+            var addMember = this.$.additional_members;
+            if (menu.selected == "Individual") {
+                dues.innerHTML = "$50";
+                desc.innerHTML = "Individual membership includes one person.";
+                addMember.hidden = true;
+            }
+            else if (menu.selected == "Family") {
+                dues.innerHTML = "$75";
+                desc.innerHTML = "Family membership is for multiple people in a single household.";
+                addMember.hidden = false;
+            }
+            else if (menu.selected == "Starving Student")
+            {
+                dues.innerHTML = "$25";
+                desc.innerHTML = "This membership type is only available to high school and college students.";
+                addMember.hidden = true;
+            }
+            else
+            {
+                console.log("invalid selection: ", menu.selected);
+                menu.selected = "Individual";
+            }
+        },
+        additionalMemberCount: 0,
+        addMember: function() {
+        	var memberInfo = this.$.additional_member_info;
+        	
+        	// inject the new HTML for the member
+        	memberInfo.innerHTML += "\n\
+        	    <member-info-form id=\"member_info" + this.additionalMemberCount + "\">\n\
+        	        <h3>Additional Member " + (this.additionalMemberCount + 1) + "</h3>\n\
+        	    </member-info-form>\n";
+        	
+        	this.additionalMemberCount++;
+        }
+    });
+</script>
+</polymer-element>

@@ -1,0 +1,135 @@
+<link rel="import" href="../components/polymer/polymer.html" />
+<link rel="import" href="../paper-input/paper-input.html" />
+<link rel="import" href="../paper-toggle-button/paper-toggle-button.html" />
+
+<polymer-element name="member-info-form" attributes="primary">
+  <template>
+    <style>
+        :host {
+            display: block;
+            font-size: 1rem;
+        }
+        
+        #member_title h3 {
+            font-size: 1.1rem;
+        }
+        
+        #member_info {
+            width: 65%;
+        }
+        
+        .line {
+            width: 100%;
+        }
+        
+        paper-input.required,
+        .required paper-input {
+            color: black;
+        }
+        
+        paper-input {
+            display: inline-block;
+            width: 100%;
+        }
+
+       paper-input#member_state,
+       paper-input#member_zip {
+            width: 10em;
+        }
+        
+        #contact {
+            padding: 5px;
+            float: right;
+            width: 30%;
+        }
+    </style>
+
+    <div id="member_title" layout horizontal center>
+        <content select="h3"></content>
+    </div>
+    
+    <label for="minor">Under 18?</label>
+    <paper-toggle-button id="minor" on-core-change="{{toggleMinor}}" checked="{{isMinor == true}}">
+    </paper-toggle-button>
+    
+    <div id="contact">
+	    <div id="guardian" hidden?="{{!isMinor}}">
+	        <h4>Legal Guardian</h4>
+	        <paper-input label="Full Name" class="line required"></paper-input>
+	        <paper-input label="Phone" class="line required"></paper-input>
+	    </div>
+	    
+	    <div id="emergency">
+	        <h4>Emergency Contact</h4>
+	        <paper-input label="Full Name" class="line required"></paper-input>
+	        <paper-input label="Phone" class="line required"></paper-input>
+	    </div>
+    </div>
+    
+    <div id="member_info" layout vertical>        
+        <div id="member_name" class="line required" layout horizontal center>
+	        <paper-input label="First Name"></paper-input>
+	        <paper-input label="Last Name"></paper-input>
+        </div>
+        
+        <paper-input label="Company" class="line" hidden?="{{primary == false}}"></paper-input>
+        
+        <h4>Address</h4>
+        <div id="address_primary_switch" hidden?="{{primary == false}}">
+	        <label for="address_primary">Same as primary?</label>
+	        <paper-toggle-button id="address_primary" checked="{{addressSameAsPrimary}}" on-core-change="{{toggleAddressSameAsPrimary}}">
+	        </paper-toggle-button>
+        </div>
+        <div id="address" hidden?="{{addressSameAsPrimary}}">
+	        <paper-input label="Mailing Address" class="line required"></paper-input>
+	        <paper-input label="Apartment" class="line"></paper-input>
+	        <div id="member_city" class="line required" layout horizontal center>
+		        <paper-input label="City"></paper-input>
+		        <paper-input label="State" id="member-state"></paper-input>
+		        <paper-input label="ZIP Code" id="member-zip"></paper-input>
+	        </div>
+        </div>
+        
+        <h4>Contact</h4>
+        <div id="contact_primary_switch" hidden?="{{primary == false}}">
+	        <label for="contact_primary">Same as primary?</label>
+	        <paper-toggle-button id="contact-primary"  checked="{{contactSameAsPrimary}}" on-core-change="{{toggleContactSameAsPrimary}}">
+	        </paper-toggle-button>
+        </div>
+        <div id="contact_info" hidden?="{{contactSameAsPrimary}}">
+	        <paper-input label="E-mail" class="line required"></paper-input>
+	        <paper-input label="Phone" class="line"></paper-input>
+        </div>
+    </div>
+    
+  </template>
+  <script>
+  Polymer('member-info-form', {
+	  primary: { 
+		  value: false,
+		  reflect: true
+	  },
+	  isMinor: false,
+      addressSameAsPrimary: false,
+	  contactSameAsPrimary: false,
+	  toggleMinor: function() {
+	        var checkbox = this.$.minor;
+            this.isMinor = checkbox.checked;
+	        var guardianInfo = this.$.guardian;
+	        guardianInfo.hidden = !this.isMinor;
+	  },
+	  toggleContactSameAsPrimary: function() {
+		  var checkbox = this.$.contact_primary;
+          this.contactSameAsPrimary = checkbox.checked;
+		  var contactDiv = this.$.contact_info;
+		  contactDiv.hidden = this.contactSameAsPrimary;
+	  },
+      toggleAddressSameAsPrimary: function() {
+          var checkbox = this.$.address_primary;
+          this.addressSameAsPrimary = checkbox.checked;
+          var addrDiv = this.$.address;
+          addrDiv.hidden = this.addressSameAsPrimary;
+      }
+  });
+  </script>
+</polymer-element>

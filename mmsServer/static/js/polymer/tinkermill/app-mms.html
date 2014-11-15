@@ -1,10 +1,13 @@
 <!-- Polymer Imports -->
 <link rel="import" href="../polymer/polymer.html" />
 <link rel="import" href="../core-scaffold/core-scaffold.html" />
+<link rel="import" href="../core-header-panel/core-header-panel.html" />
+<link rel="import" href="../core-toolbar/core-toolbar.html" />
 <link rel="import" href="../core-menu/core-menu.html" />
 <link rel="import" href="../paper-item/paper-item.html" />
 <link rel="import" href="../core-pages/core-pages.html" />
 <link rel="import" href="page-main.html" />
+<link rel="import" href="page-register.html" />
 
 <polymer-element name="app-mms">
 
@@ -56,9 +59,9 @@
             </core-menu>
         </core-header-panel>
         <div id="div" tool>TinkerMill Member Management System (MMS)</div>
-        <core-pages selected="0" notap id="core_pages">
+        <core-pages selected="0" notap id="core_pages" fit>
             <section id="section-page-main"><page-main></page-main></section>
-            <section id="section-page-register">Register Page</section>
+            <section id="section-page-register"><page-register></page-register></section>
             <section id="section-page-login">Login Page</section>
         </core-pages>
     </core-scaffold>
