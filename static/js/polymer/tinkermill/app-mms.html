@@ -47,15 +47,18 @@
     <core-scaffold id="core_scaffold">
         <core-header-panel mode="seamed" id="core_header_panel" flex navigation>
             <core-toolbar id="core_toolbar"></core-toolbar>
-            <core-menu valueattr="label" id="core_menu" theme="core-light-theme">
+            <core-menu valueattr="label" id="core_menu" theme="core-light-theme" >
+                <!-- Make a TinkerMill icon for the home button -->
+                <paper-item id="menu_item_home" label="Home" icon="home" layout center horizontal></paper-item>
                 <paper-item id="menu_item_register" label="Register" icon="add-circle" layout center horizontal></paper-item>
                 <paper-item id="menu_item_login" label="Login" icon="account-circle" layout center horizontal></paper-item>
             </core-menu>
         </core-header-panel>
         <div id="div" tool>TinkerMill Member Management System (MMS)</div>
-        <core-pages selected="0" selectedindex="0" notap id="core_pages">
-            <section id="section-page-main" active><page-main></page-main></section>
+        <core-pages selected="0" notap id="core_pages">
+            <section id="section-page-main"><page-main></page-main></section>
             <section id="section-page-register">Register Page</section>
+            <section id="section-page-login">Login Page</section>
         </core-pages>
     </core-scaffold>
 </template>
