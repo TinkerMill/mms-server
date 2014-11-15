@@ -1,0 +1,58 @@
+<!-- Polymer Imports -->
+<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="page-main.html" />
+
+<polymer-element name="app-mms">
+
+<!-- Polymer Element Template-->
+<template>
+    <style>   
+        #design_host {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        #core_scaffold {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+        }
+        #core_header_panel {
+            background-color: rgb(255, 255, 255);
+        }
+        #core_toolbar {
+            background-color: rgb(79, 125, 201);
+            color: rgb(255, 255, 255);
+        }
+        #core_menu {
+            font-size: 16px;
+        }
+    </style>
+    
+    <core-scaffold id="core_scaffold">
+        <core-header-panel mode="seamed" id="core_header_panel" flex navigation>
+            <core-toolbar id="core_toolbar"></core-toolbar>
+            <core-menu valueattr="label" id="core_menu" theme="core-light-theme">
+                <core-item id="menu_item_register" label="Register" icon="add-circle" layout center horizontal></core-item>
+                <core-item id="menu_item_login" label="Login" icon="account-circle" layout center horizontal></core-item>
+            </core-menu>
+        </core-header-panel>
+        <div id="div" tool>TinkerMill Member Management System (MMS)</div>
+        <core-pages selected="0" selectedindex="0" notap id="core_pages">
+            <section id="section-page-main" active><page-main></page-main></section>
+            <section id="section-page-register">Register Page</section>
+        </core-pages>
+    </core-scaffold>
+</template>
+
+<!-- Polymer Element Script -->
+<script>
+    Polymer( 'app-mms', {
+        ready: function() {
+        }
+    });
+</script>
+</polymer-element>
