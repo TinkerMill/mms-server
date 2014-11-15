@@ -42,12 +42,15 @@
             border: 1px solid silver;
             position: absolute;
         }
+        #core_pages section {
+            margin: 10px;
+        }
     </style>
     
     <core-scaffold id="core_scaffold">
         <core-header-panel mode="seamed" id="core_header_panel" flex navigation>
             <core-toolbar id="core_toolbar"></core-toolbar>
-            <core-menu valueattr="label" id="core_menu" theme="core-light-theme" >
+            <core-menu valueattr="label" id="core_menu" theme="core-light-theme" on-core-select="{{selectPage}}">
                 <!-- Make a TinkerMill icon for the home button -->
                 <paper-item id="menu_item_home" label="Home" icon="home" layout center horizontal></paper-item>
                 <paper-item id="menu_item_register" label="Register" icon="add-circle" layout center horizontal></paper-item>
@@ -67,6 +70,27 @@
 <script>
     Polymer( 'app-mms', {
         ready: function() {
+        },
+        selectPage: function(e, detail) {
+            // Selecting a menu item loads a given page
+            if (detail.isSelected) {
+                var pages = this.$.core_pages;
+                switch (detail.item.id)
+                {
+                case 'menu_item_home':
+                    pages.selected = 0;
+                    break;
+                case 'menu_item_register':
+                    pages.selected = 1;
+                    break;
+                case 'menu_item_login':
+                    pages.selected = 2;
+                    break;
+                default:
+                    console.log("unrecognized menu selection");
+                    pages.selected = 0;
+                }
+            }
         }
     });
 </script>
