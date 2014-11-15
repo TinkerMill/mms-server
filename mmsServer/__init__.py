@@ -86,11 +86,11 @@ def getMemberIdFromSerial(serialNumber):
         return str( id[0])
     return "-1"
 
-@app.cli.command('initdb')
-def initdb_command():
-    """Creates the database tables."""
-    init_db()
-    print('Initialized the database.')
+#@app.cli.command('initdb')
+#def initdb_command():
+#    """Creates the database tables."""
+#    init_db()
+#    print('Initialized the database.')
 
 @app.route("/matt")
 def matt():
