@@ -14,3 +14,6 @@ Thumbs.db
 # Ignoring Bower Pollution
 .bower.json
 
+# Ignore Eclipse project files
+.pydevproject
+.project
