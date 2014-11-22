@@ -87,11 +87,14 @@
         addMember: function() {
         	var memberInfo = this.$.additional_member_info;
         	
-        	// inject the new HTML for the member
-        	memberInfo.innerHTML += "\n\
-        	    <member-info-form id=\"member_info" + this.additionalMemberCount + "\">\n\
-        	        <h3>Additional Member " + (this.additionalMemberCount + 1) + "</h3>\n\
-        	    </member-info-form>\n";
+            // inject the new member-info-form into the DOM
+            var newMemberInfo = document.createElement("member-info-form");
+            newMemberInfo.setAttribute("id", "member_info" + this.additionalMemberCount);
+            var newMemberH3 = document.createElement("h3");
+            var newMemberTitle = document.createTextNode("Additional Member " + (this.additionalMemberCount + 1));
+            newMemberH3.appendChild(newMemberTitle);
+            newMemberInfo.appendChild(newMemberH3);
+            memberInfo.appendChild(newMemberInfo);
         	
         	this.additionalMemberCount++;
         }
