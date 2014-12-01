@@ -1,3 +1,5 @@
+-- NOTE: The tables are being handled by SQLAlchemy.  Use SQLAlchemy to create the tables!
+
 -- Drop all of the tables to wipe the database
 drop table if exists member;
 drop table if exists membership;
