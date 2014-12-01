@@ -25,7 +25,7 @@ class Member( db.Model):
     emergency_email = db.Column( db.Text)
     account_disabled = db.Column( db.Boolean, nullable = False)
     is_minor = db.Column( db.Boolean, nullable = False)
-    gaurdian_name = db.Column( db.Text)
+    guardian_name = db.Column( db.Text)
     start_date = db.Column( db.Date, nullable = False)
     role_id = db.Column( db.Integer, nullable = False)
     password_hash = db.Column( db.Text)
