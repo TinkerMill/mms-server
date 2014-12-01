@@ -23,13 +23,12 @@ class Member( db.Model):
     emergency_phone = db.Column( db.Text)
     emergency_name = db.Column( db.Text)
     emergency_email = db.Column( db.Text)
-    account_disabled = db.Column( db.Boolean, nullable = False)
-    is_minor = db.Column( db.Boolean, nullable = False)
+    account_disabled = db.Column( db.Boolean, nullable = False, default = False)
+    is_minor = db.Column( db.Boolean, nullable = False, default = False)
     guardian_name = db.Column( db.Text)
     start_date = db.Column( db.Date, nullable = False)
-    role_id = db.Column( db.Integer, nullable = False)
+    role_id = db.Column( db.Integer, nullable = False, default = 1) # role_ids: 3 -> admin, 1 -> member
     password_hash = db.Column( db.Text)
-    badge_serial = db.Column( db.String( 16), unique = True)
     
     def __repr__( self):
         # Debug representatino
