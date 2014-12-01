@@ -14,7 +14,7 @@ class Member( db.Model):
     
     # Columns
     id = db.Column( db.Integer, primary_key = True)
-    membership_id = db.Column( db.Integer) # This becomes a foreign key into "Membership"
+    membership_id = db.Column( db.Integer, db.ForeignKey( 'memberships.id')) # This becomes a foreign key into "Membership"
     first_name = db.Column( db.Text, nullable = False)
     last_name = db.Column( db.Text)
     company_name = db.Column( db.Text)
@@ -43,13 +43,29 @@ class Membership( db.Model):
     
     # Columns
     id = db.Column( db.Integer, primary_key = True)
-    membershiptype_id = db.Column( db.Integer) # This becomes a foreign key into "MembershipType"
+    membershiptype_id = db.Column( db.Integer, db.ForeignKey( 'membershiptypes.id'))
     billing_address_line1 = db.Column( db.Text)
     billing_address_line2 = db.Column( db.Text)
     billing_address_state = db.Column( db.String( 2))
     billing_address_zipcode = db.Column( db.String( 10))
-    primary_member_id = db.Column( db.Integer, db.ForeignKey( 'members.id'), nullable = False) # This becomes a foreign key into "Member"
+    primary_member_id = db.Column( db.Integer, db.ForeignKey( 'members.id'), nullable = False)
     start_date = db.Column( db.Date, nullable = False)
+    
+    def __repr__( self):
+        # Debug representatino
+        return '<Membership: %r>' % ( self.id, )
+    
+    def __str__( self):
+        # Debug representatino
+        return '<Membership: %r>' % ( self.id, )
+
+class Membershiptype( db.Model):
+    __tablename__ = 'membershiptypes'
+    
+    # Columns
+    id = db.Column( db.Integer, primary_key = True)
+    name = db.Column( db.String( 255), unique = True, nullable = False)
+    memberships = db.relationship( 'Membership', backref = 'type', lazy = 'dynamic') # This is sweet SQLAlchemy magic
     
     def __repr__( self):
         # Debug representatino
