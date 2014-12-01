@@ -18,7 +18,7 @@ class Member( db.Model):
     firstName = db.Column( db.Text, nullable = False)
     lastName = db.Column( db.Text)
     companyName = db.Column( db.Text)
-    email = db.Column( db.Text, unique = True, index = True, nullable = False)
+    email = db.Column( db.String( 255), unique = True, index = True, nullable = False)
     phone = db.Column( db.Text)
     emergencyPhone = db.Column( db.Text)
     emergencyName = db.Column( db.Text)
