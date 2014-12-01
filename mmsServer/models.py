@@ -14,7 +14,7 @@ class Member( db.Model):
     
     # Columns
     id = db.Column( db.Integer, primary_key = True)
-    membership_id = db.Column( db.Integer, db.ForeignKey( 'memberships.id')) # This becomes a foreign key into "Membership"
+    membership_id = db.Column( db.Integer) # This is a manually managed foreign key into "Membership"
     first_name = db.Column( db.Text, nullable = False)
     last_name = db.Column( db.Text)
     company_name = db.Column( db.Text)
