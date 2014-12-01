@@ -1,9 +1,9 @@
 #!/usr/bin/env python
+
 # __init__.py
 
 ### IMPORTS ###
 import os
-
 
 import sys
 import os.path
@@ -12,6 +12,7 @@ import sqlite3
 import json
 
 from flask import Flask, g, render_template, request
+from flask.ext.sqlalchemy import SQLAlchemy
 
 from createSerialNumber import createSerialNumber
 from acl import checkAcl
@@ -25,10 +26,20 @@ templateDirectory = os.path.join( os.path.dirname( os.path.abspath(__file__)), '
 
 app = Flask( 'mmsServer', template_folder = templateDirectory)
 
-app.config.update(dict(DATABASE="tinkermill.db"))
-app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+#app.config.update(dict(DATABASE="tinkermill.db"))
+#app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join( os.path.dirname( __file__), 'mms.db')
+#SQLALCHEMY_DATABASE_URI = 'mysql://localhost/mmsServer'
+
+app.config[ 'SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
+
+db = SQLAlchemy( app)
 
 ### VIEWS ###
+
+# This should be used in the modules to import the models for use
+from mmsServer.models import Members
 
 ### FUNCTIONS ###
 
