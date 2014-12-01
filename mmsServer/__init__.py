@@ -39,7 +39,7 @@ db = SQLAlchemy( app)
 ### VIEWS ###
 
 # This should be used in the modules to import the models for use
-from mmsServer.models import Members
+from mmsServer.models import Member
 
 ### FUNCTIONS ###
 
