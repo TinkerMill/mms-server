@@ -14,7 +14,7 @@ Installation
 ------------
 
 1. Install a database engine.  We're using MariaDB ( a MySQL replacement) here at TinkerMill.
- * `apt-get install mariadb-server`
+ * `apt-get install mariadb-server python-mysqldb`
 
 1. Load the schema into the database.
 

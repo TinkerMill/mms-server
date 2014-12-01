@@ -30,7 +30,7 @@ app = Flask( 'mmsServer', template_folder = templateDirectory)
 #app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join( os.path.dirname( __file__), 'mms.db')
-#SQLALCHEMY_DATABASE_URI = 'mysql://localhost/mmsServer'
+#SQLALCHEMY_DATABASE_URI = 'mysql://localhost/mms_server'
 
 app.config[ 'SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 
