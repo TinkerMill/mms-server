@@ -5,6 +5,7 @@
 
 ### IMPORTS ###
 from mmsServer import db
+from sqlalchemy.dialects import mysql
 
 ### GLOBALS ###
 
@@ -31,11 +32,11 @@ class Member( db.Model):
     password_hash = db.Column( db.Text)
     
     def __repr__( self):
-        # Debug representatino
+        # Debug representation
         return '<Member: %r %r>' % ( self.first_name, self.last_name)
     
     def __str__( self):
-        # Debug representatino
+        # Debug representation
         return '<Member: %r %r>' % ( self.first_name, self.last_name)
 
 class Membership( db.Model):
@@ -52,11 +53,11 @@ class Membership( db.Model):
     start_date = db.Column( db.Date, nullable = False)
     
     def __repr__( self):
-        # Debug representatino
+        # Debug representation
         return '<Membership: %r>' % ( self.id, )
     
     def __str__( self):
-        # Debug representatino
+        # Debug representation
         return '<Membership: %r>' % ( self.id, )
 
 class Membershiptype( db.Model):
@@ -68,12 +69,29 @@ class Membershiptype( db.Model):
     memberships = db.relationship( 'Membership', backref = 'type', lazy = 'dynamic') # This is sweet SQLAlchemy magic
     
     def __repr__( self):
-        # Debug representatino
-        return '<Membership: %r>' % ( self.id, )
+        # Debug representation
+        return '<Membershiptype: %r>' % ( self.id, )
     
     def __str__( self):
-        # Debug representatino
-        return '<Membership: %r>' % ( self.id, )
+        # Debug representation
+        return '<Membershiptype: %r>' % ( self.id, )
+
+class Memberpic( db.Model):
+    __tablename__ = 'memberpics'
+    
+    # Columns
+    id = db.Column( db.Integer, primary_key = True)
+    member_id = db.Column( db.Integer, db.ForeignKey( 'members.id'), nullable = False)
+    image_type = db.Column( db.String( 3), nullable = False)
+    image_blob = db.Column( mysql.LONGBLOB, nullable = False)
+    
+    def __repr__( self):
+        # Debug representation
+        return '<Image for Memebr: %r>' % ( self.member_id, )
+    
+    def __str__( self):
+        # Debug representation
+        return '<Image for Memebr: %r>' % ( self.member_id, )
 
 ### FUNCTIONS ###
 
