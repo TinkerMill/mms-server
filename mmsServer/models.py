@@ -48,7 +48,7 @@ class Membership( db.Model):
     billing_address_line2 = db.Column( db.Text)
     billing_address_state = db.Column( db.String( 2))
     billing_address_zipcode = db.Column( db.String( 10))
-    primary_member_id = db.Column( db.Integer, db.ForeignKey( 'member.id'), nullable = False) # This becomes a foreign key into "Member"
+    primary_member_id = db.Column( db.Integer, db.ForeignKey( 'members.id'), nullable = False) # This becomes a foreign key into "Member"
     start_date = db.Column( db.Date, nullable = False)
     
     def __repr__( self):
