@@ -32,11 +32,32 @@ class Member( db.Model):
     
     def __repr__( self):
         # Debug representatino
-        return '<User: %r %r>' % ( self.firstName, self.lastName)
+        return '<Member: %r %r>' % ( self.first_name, self.last_name)
     
     def __str__( self):
         # Debug representatino
-        return '<User: %r %r>' % ( self.firstName, self.lastName)
+        return '<Member: %r %r>' % ( self.first_name, self.last_name)
+
+class Membership( db.Model):
+    __tablename__ = 'memberships'
+    
+    # Columns
+    id = db.Column( db.Integer, primary_key = True)
+    membershiptype_id = db.Column( db.Integer) # This becomes a foreign key into "MembershipType"
+    billing_address_line1 = db.Column( db.Text)
+    billing_address_line2 = db.Column( db.Text)
+    billing_address_state = db.Column( db.String( 2))
+    billing_address_zipcode = db.Column( db.String( 10))
+    primary_member_id = db.Column( db.Integer, nullable = False) # This becomes a foreign key into "Member"
+    start_date = db.Column( db.Date, nullable = False)
+    
+    def __repr__( self):
+        # Debug representatino
+        return '<Membership: %r>' % ( self.id, )
+    
+    def __str__( self):
+        # Debug representatino
+        return '<Membership: %r>' % ( self.id, )
 
 ### FUNCTIONS ###
 
