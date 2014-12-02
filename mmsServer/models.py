@@ -93,5 +93,55 @@ class Memberpic( db.Model):
         # Debug representation
         return '<Image for Memebr: %r>' % ( self.member_id, )
 
+class Capability( db.Model):
+    __tablename__ = 'capabilities'
+    
+    # Columns
+    id = db.Column( db.Integer, primary_key = True)
+    capabilitytype_id = db.Column( db.Integer, db.ForeignKey( 'capabilitytypes.id'))
+    member_id = db.Column( db.Integer, db.ForeignKey( 'members.id'), nullable = False)
+    start_date = db.Column( db.Date, nullable = False)
+    
+    def __repr__( self):
+        # Debug representation
+        return '<Capability: %r>' % ( self.id, )
+    
+    def __str__( self):
+        # Debug representation
+        return '<Capability: %r>' % ( self.id, )
+
+class Capabilitytype( db.Model):
+    __tablename__ = 'capabilitytypes'
+    
+    # Columns
+    id = db.Column( db.Integer, primary_key = True)
+    name = db.Column( db.String( 255), unique = True, nullable = False)
+    memberships = db.relationship( 'Capability', backref = 'type', lazy = 'dynamic') # This is sweet SQLAlchemy magic
+    
+    def __repr__( self):
+        # Debug representation
+        return '<Capabilitytype: %r>' % ( self.id, )
+    
+    def __str__( self):
+        # Debug representation
+        return '<Capabilitytype: %r>' % ( self.id, )
+
+class Accessdevice( db.Model):
+    __tablename__ = 'accessdevices'
+    
+    # Columns
+    id = db.Column( db.Integer, primary_key = True)
+    location = db.Column( db.String( 255), nullable = False)
+    capabilitytype_id = db.Column( db.Integer, db.ForeignKey( 'capabilitytypes.id')) # This type enables access
+    api_key = db.Column( db.String( 255), unique = True, nullable = False) # Might convert this to a key pair
+    
+    def __repr__( self):
+        # Debug representation
+        return '<Accessdevice: %r>' % ( self.id, )
+    
+    def __str__( self):
+        # Debug representation
+        return '<Accessdevice: %r>' % ( self.id, )
+
 ### FUNCTIONS ###
 
