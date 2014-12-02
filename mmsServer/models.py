@@ -133,7 +133,26 @@ class Accessdevice( db.Model):
     id = db.Column( db.Integer, primary_key = True)
     location = db.Column( db.String( 255), nullable = False)
     capabilitytype_id = db.Column( db.Integer, db.ForeignKey( 'capabilitytypes.id')) # This type enables access
-    api_key = db.Column( db.String( 255), unique = True, nullable = False) # Might convert this to a key pair
+    api_key = db.Column( db.String( 255), unique = True, nullable = False) # Might convert this to a key pair.
+    ## NOTE: An 'Accessdevice' should be inserted for each RFID endpoint.  The RPi should be configured with multiple
+    ##       api-keys when acting as the gateway for multiple RFID endpoints.
+    
+    def __repr__( self):
+        # Debug representation
+        return '<Accessdevice: %r>' % ( self.id, )
+    
+    def __str__( self):
+        # Debug representation
+        return '<Accessdevice: %r>' % ( self.id, )
+
+class Logaccessdevice( db.Model):
+    __tablename__ = 'logaccessdevices'
+    
+    # Columns
+    id = db.Column( db.Integer, primary_key = True)
+    device_id = db.Column( db.Integer, db.ForeignKey( 'accessdevices.id'), nullable = False)
+    member_id = db.Column( db.Integer, db.ForeignKey( 'members.id'), nullable = False)
+    timestamp = db.Column( db.Datetime, nullable = False) # Might convert this to a key pair
     
     def __repr__( self):
         # Debug representation
