@@ -116,7 +116,7 @@ class Capabilitytype( db.Model):
     # Columns
     id = db.Column( db.Integer, primary_key = True)
     name = db.Column( db.String( 255), unique = True, nullable = False)
-    memberships = db.relationship( 'Capability', backref = 'type', lazy = 'dynamic') # This is sweet SQLAlchemy magic
+    capabilities = db.relationship( 'Capability', backref = 'type', lazy = 'dynamic') # This is sweet SQLAlchemy magic
     
     def __repr__( self):
         # Debug representation
