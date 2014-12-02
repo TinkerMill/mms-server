@@ -152,7 +152,7 @@ class Logaccessdevice( db.Model):
     id = db.Column( db.Integer, primary_key = True)
     device_id = db.Column( db.Integer, db.ForeignKey( 'accessdevices.id'), nullable = False)
     member_id = db.Column( db.Integer, db.ForeignKey( 'members.id'), nullable = False)
-    timestamp = db.Column( db.Datetime, nullable = False) # Might convert this to a key pair
+    timestamp = db.Column( db.DateTime, nullable = False) # Might convert this to a key pair
     
     def __repr__( self):
         # Debug representation
