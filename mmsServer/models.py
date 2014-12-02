@@ -47,6 +47,7 @@ class Membership( db.Model):
     membershiptype_id = db.Column( db.Integer, db.ForeignKey( 'membershiptypes.id'))
     billing_address_line1 = db.Column( db.Text)
     billing_address_line2 = db.Column( db.Text)
+    billing_address_city = db.Column( db.Text)
     billing_address_state = db.Column( db.String( 2))
     billing_address_zipcode = db.Column( db.String( 10))
     primary_member_id = db.Column( db.Integer, db.ForeignKey( 'members.id'), nullable = False)
