@@ -17,6 +17,7 @@ Vagrant Installation
 * vagrant ssh
 * cd /vagrant
 * run the server
+* when you are finished (save) logout and run: vagrant destroy 
 
 Installation
 ------------

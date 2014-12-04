@@ -29,12 +29,12 @@ exec{"dbpass2":
 }
 
 exec {"flask":
-  command => "/usr/bin/pip install flask"
+  command => "/usr/bin/pip install flask",
   require => Package['python-pip'],
   }
 
 exec {"Flask-SQLAlchemy":,
-  command => "/usr/bin/pip install Flask-SQLAlchemy"
+  command => "/usr/bin/pip install Flask-SQLAlchemy",
   require => Package['python-pip'],
   }
 
@@ -44,6 +44,6 @@ exec {"SQLAlchemy":
 }
 
 exec {"createDB":
-  command => 'echo "create database if not exists mms_server" | mysql --user=root --password=strangehat'}
+  command => '/bin/echo "create database if not exists mms_server" | /usr/bin/mysql --user=root --password=strangehat',
   require => Package['mysql-server'],
 }

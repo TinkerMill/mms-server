@@ -11,13 +11,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     pc.vm.box_url = "http://goo.gl/8kWkm"
 
     config.vm.provision :shell, :inline => "/usr/bin/apt-get update"
-    
-    #pc.vm.provision "puppet" do |p|
-    #  p.manifest_file = "desktop.pp"
-    #end
+
+    pc.vm.provision "puppet" do |p|
+      p.manifest_file = "desktop.pp"
+    end
 
     pc.vm.network    "private_network", ip: "192.168.0.30"
     pc.vm.hostname = "dooraccess"
+    pc.vm.network    "forwarded_port", guest: 5000, host: 5000
   end
 
 
