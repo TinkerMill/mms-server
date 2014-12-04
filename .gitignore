@@ -17,3 +17,6 @@ Thumbs.db
 # Ignore Eclipse project files
 .pydevproject
 .project
+
+# ignore vagrant working dir
+.vagrant
