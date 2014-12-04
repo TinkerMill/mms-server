@@ -10,6 +10,14 @@ User stories for the Member Maangment System are being kept on www.storiesonboar
 
 If you need access, contact David Robinson at davidrobertrobinson@gmail.com
 
+Vagrant Installation
+--------------------
+* checkout the source
+* vagrant up
+* vagrant ssh
+* cd /vagrant
+* run the server
+
 Installation
 ------------
 
