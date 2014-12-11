@@ -36,14 +36,17 @@ app.config[ 'SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 
 db = SQLAlchemy( app)
 
-### VIEWS ###
-
 # This should be used in the modules to import the models for use
-from mmsServer.models import Member
+#from mmsServer import models
+
+### VIEWS ###
+# Import the needed views
+from mmsServer.checkAccess import CheckAccess
+
+# Setup the views
+view_checkAccess = CheckAccess.as_view( 'checkAccess')
 
 ### FUNCTIONS ###
-
-### ROUTING ###
 def log(deviceId, memberId, message):
     """log access to the API. will add a timestamp to the logs
     
@@ -60,48 +63,53 @@ def log(deviceId, memberId, message):
     cur.execute("insert into usageLog ('deviceId','memberId','message') values (%s,%s,'%s')" %(deviceId, memberId, message))
     g.sqlite_db.commit()
     cur.close()
-    
-def insert(table, fields=(), values=()):
-    # g.db is the database connection
-    cur = g.sqlite_db.cursor()
-    query = 'INSERT INTO %s (%s) VALUES (%s)' % (
-        table,
-        ', '.join(fields),
-        ', '.join(['?'] * len(values))
-    )
-    cur.execute(query, values)
-    g.sqlite_db.commit()
-    id = cur.lastrowid
-    cur.close()
-    return id
 
-def connect_db():
-    """Connects to the specific database."""
-    rv = sqlite3.connect(app.config['DATABASE'])
-    rv.row_factory = sqlite3.Row
-    return rv
+## HANDLED BY SQLAlchemy
+#def insert(table, fields=(), values=()):
+#    # g.db is the database connection
+#    cur = g.sqlite_db.cursor()
+#    query = 'INSERT INTO %s (%s) VALUES (%s)' % (
+#        table,
+#        ', '.join(fields),
+#        ', '.join(['?'] * len(values))
+#    )
+#    cur.execute(query, values)
+#    g.sqlite_db.commit()
+#    id = cur.lastrowid
+#    cur.close()
+#    return id
 
-def init_db():
-    """Initializes the database."""
-    db = get_db()
-    with app.open_resource('schema.sql', mode='r') as f:
-        db.cursor().executescript(f.read())
-      
-    db.commit()
-    
-def get_db():
-    """Opens a new database connection if there is none yet for the
-    current application context.
-    """
-    if not hasattr(g, 'sqlite_db'):
-        g.sqlite_db = connect_db()
-    return g.sqlite_db
+## HANDLED BY SQLAlchemy
+#def connect_db():
+#    """Connects to the specific database."""
+#    rv = sqlite3.connect(app.config['DATABASE'])
+#    rv.row_factory = sqlite3.Row
+#    return rv
 
-def query_db(query, args=(), one=False):
-    cur = get_db().execute(query, args)
-    rv = cur.fetchall()
-    cur.close()
-    return (rv[0] if rv else None) if one else rv
+## HANDLED BY SQLAlchemy
+#def init_db():
+#    """Initializes the database."""
+#    db = get_db()
+#    with app.open_resource('schema.sql', mode='r') as f:
+#        db.cursor().executescript(f.read())
+#      
+#    db.commit()
+
+## HANDLED BY SQLAlchemy
+#def get_db():
+#    """Opens a new database connection if there is none yet for the
+#    current application context.
+#    """
+#    if not hasattr(g, 'sqlite_db'):
+#        g.sqlite_db = connect_db()
+#    return g.sqlite_db
+
+## HANDLED BY SQLAlchemy
+#def query_db(query, args=(), one=False):
+#    cur = get_db().execute(query, args)
+#    rv = cur.fetchall()
+#    cur.close()
+#    return (rv[0] if rv else None) if one else rv
  
 def getMemberIdFromSerial(serialNumber):
     db = get_db()
@@ -116,49 +124,19 @@ def getMemberIdFromSerial(serialNumber):
 #    init_db()
 #    print('Initialized the database.')
 
+### ROUTING ###
+# NOTE: See http://flask.pocoo.org/docs/0.10/views/ for more information, specifically "Method Based Dispatching"
+#       and "Method Views for APIs".
+
+# /checkAccess
+#   - Expects an mms-api-key header to be present and contain a UUID for the device.
+#   - Expects an mms-badge header to be present and contain the serial number of an RFID badge.
+app.add_url_rule( '/checkAccess', view_func = view_checkAccess, methods = [ 'GET', ])
+
+# Other routing
 @app.route("/matt")
 def matt():
     return getMemberIdFromSerial('a2f49dk3')
-    
-@app.route("/checkAccess/<deviceId>/<serialNumber>")
-def checkAccess(deviceId=None, serialNumber=None):
-    """Return if serialNumber has access to current device
-
-    Given a number off the RFID badge, lookup the user that is associated
-    with that number, and then check if that user has access to that deviceid
-    
-    # test with :
-    # http://localhost:5000/checkAccess/0/a2f49dk3   <- YAY 
-    # http://localhost:5000/checkAccess/0/a2f49dk33  <- FAIL
-    Args:
-       deviceId (int):  The ID of the device
-       serialNumber (string) : the Serial number on the badge
-       
-    Returns:
-       JSON  The return code::
-
-          {status: true, message: "Success" } -- Success!
-          {status: false, message: "fail reason" } -- No good.
-          
-    """
-    
-    memberId = getMemberIdFromSerial(serialNumber)
-    log(deviceId, memberId, "Requesting Access for serial:" + serialNumber)
-    
-    db = get_db()
-    sql = "select entitlements.active from entitlements,member where member.id=entitlements.memberId and entitlements.memberId=%s and entitlements.deviceId=%s and member.badgeSerialNumber='%s'" % (memberId, deviceId, serialNumber)
-    print sql
-    for status in query_db(sql):
-        if status[0] == 1:
-            log(deviceId, memberId, "Granted Access")
-            return json.dumps({'status': True, 'message': "Success"})
-        if status[0] == 0:
-            log(deviceId, memberId, "Denined Access : Access has been revoked")
-            return json.dumps({'status': False, 'message': "Access has been revoked"})
-    
-    log(deviceId, memberId, "Denined Access : No Access found")       
-    return json.dumps({'status': False, 'message': "No Access found."})
-
 
 @app.route("/log/usageLog")
 def showLogusageLog():
