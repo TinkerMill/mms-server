@@ -60,9 +60,9 @@
         </core-header-panel>
         <div id="div" tool>TinkerMill Member Management System (MMS)</div>
         <core-pages selected="0" notap id="core_pages" fit>
-            <section id="section-page-main"><page-main></page-main></section>
-            <section id="section-page-register"><page-register></page-register></section>
-            <section id="section-page-login">Login Page</section>
+            <section id="section_page_main"><page-main></page-main></section>
+            <section id="section_page_register"><page-register></page-register></section>
+            <section id="section_page_login">Login Page</section>
         </core-pages>
     </core-scaffold>
 </template>
@@ -83,6 +83,7 @@
                     break;
                 case 'menu_item_register':
                     pages.selected = 1;
+                    this.shadowRoot.querySelector('page-register').fire('reset', {});
                     break;
                 case 'menu_item_login':
                     pages.selected = 2;

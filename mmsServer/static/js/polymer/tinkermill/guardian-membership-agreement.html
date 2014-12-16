@@ -1,0 +1,44 @@
+<!-- Polymer Imports -->
+<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="../paper-input/paper-input.html" />
+
+<polymer-element name="guardian-membership-agreement" attributes="button_text">
+
+<!-- Polymer Element Template-->
+<template>
+    <style>
+    :host {
+        display: block;
+        position: relative;
+        background-color: white;
+        padding: 20px;
+    }
+    </style>
+    
+    <h2>Membership Agreement for Minors</h2>
+    
+    <p>In order for you to become a member of TinkerMill, your parent or legal guardian must read and sign the Membership Agreement form on your
+    behalf.</p>
+    
+    <p>Please print the Membership Agreement from the link below and have your legal guardian sign it. Return the signed document to the front 
+    desk at TinkerMill.</p>
+    
+    <p><a href="{{agreementUrl}}" target="_blank">View the Membership Agreement</a></p>
+    
+    <paper-button id="submit_button" raised on-tap="{{nextButton}}">Submit</paper-button>
+</template>
+
+<!-- Polymer Element Script -->
+<script>
+    Polymer( 'guardian-membership-agreement', {
+        ready: function() {
+        },
+        created: function() {
+            this.agreementUrl = "https://docs.google.com/document/d/1jP1EycJYFeWkRT86OMfk0W6GWeSVdIsUdtgG7YUdbKI";
+        },
+        nextButton: function() {
+            this.fire('nextbutton', { isMinor: this.$.primary_member_info.isMinor });
+        }
+    });
+</script>
+</polymer-element>

@@ -1,0 +1,261 @@
+<!-- Polymer Imports -->
+<link rel="import" href="../polymer/polymer.html" />
+<link rel="import" href="../paper-input/paper-input.html" />
+
+<polymer-element name="membership-agreement" attributes="primary_name button_text">
+
+<!-- Polymer Element Template-->
+<template>
+    <style>
+    :host {
+        display: block;
+        position: relative;
+        background-color: white;
+        padding: 20px;
+    }
+    </style>
+    <h2>Membership &amp; Service Agreement v1.03</h2>
+    
+    <div id="agreement_text">
+        <p>TinkerMill, a Colorado Non Profit Corporation and {{primary_name}}, the entity or person identified on the signature page of this agreement 
+        ("Member" or "Licensee"), hereby agree that TinkerMill will provide to the Member a license to the shared TinkerMill facilities located in 
+        Longmont, Colorado. This Agreement is a Membership & License Agreement and is not a lease or any other form of tenancy agreement. TinkerMill 
+        and Member agree as follows:</p>
+        
+        <h3>1. Duration of Agreement & Termination.</h3>
+        
+        <p>This Agreement is a Membership and shall commence on {{todaysDate}}. This Agreement shall automatically renew on a month-to-month basis.</p>
+
+        <p>The Member or TinkerMill may terminate this Agreement any time with 30 days notice.</p>
+
+        <p>Notwithstanding the foregoing paragraph and notice period, TinkerMill reserves the right to terminate access to and use of TinkerMill's 
+        facilities at any time, immediately and without notice, if the Member fails to comply with any provision of this Agreement and TinkerMill's 
+        Policies and Procedures.</p>
+
+        <p>TinkerMill reserves the right to amend the Policies and Procedures and Services Addendum from time-to-time and at its sole discretion.
+        TinkerMill will notify Member of any changes to said rules and regulations in writing and prior to such rule changes taking effect.</p>
+
+        <p>Upon termination of this Agreement, Member shall thereafter have no further right to use TinkerMill facilities in any manner and Member 
+        shall make no further use of TinkerMill other than to remove personal items. All advance fees, if any, shall be justly prorated and returned
+        to Member, along with deposits, within 30 days of the termination of this agreement. Personal items must be removed from TinkerMill within 
+        15 days of the termination of this agreement, after which period they become property of TinkerMill.</p>
+
+        <h3>2. Description of Services.</h3>
+        
+        <p>TinkerMill agrees to provide Member with secured entry access to non-exclusive, clean, well-maintained equipment and workshop facilities, 
+        reasonable electrical power and wireless internet access.</p>
+
+        <h3>3. Member Obligations.</h3>
+        
+        <p>Member shall only use the facilities in accordance with TinkerMill Policies and Procedures. The shared facilities shall be kept in a neat,
+        clean and attractive condition at all times.  Member will not cause any damage to any part of TinkerMill, including unreasonable or 
+        inappropriate wear on equipment or damage to the building in which TinkerMill is located ("Building"). Unreasonable damage (usually breakage - 
+        TBD by the board of directors if needed) is the responsibility of the Member to correct (fix or pay to repair).  Member shall not disturb the 
+        use and enjoyment of the Services by any other Member of TinkerMill or the use and enjoyment of the Building by any occupant of the Building.
+        Member shall not use TinkerMill facilities for any inappropriate or unlawful activity including obscenity and use of material protected by 
+        intellectual property laws.  Members shall not "live" at the TinkerMill facilities at any time (sleep/eat/shower beyond one 24 hour day - 
+        exceptions may be made during multi-day hackathon events only).</p>
+
+        <h3>4. Fees.</h3>
+        
+        <p>Member agrees to make payments on a timely basis. Failure to make monthly payments will result in termination of this Agreement and
+        revocation of Member's license to use the facilities. In addition, Member shall pay all reasonable third party fees (attorney's fees and
+        debt collection fees specifically included) and other costs incurred by TinkerMill in connection with any late payments or past due amounts.</p>
+
+        <h3>5. Risk of Use.</h3>
+        
+        <p>Member acknowledges that he/she is using the facilities at his/her own free will and decision. Member acknowledges that TinkerMill does not 
+        have any liability with respect to Member's access, participation in, use of the facilities, or any loss resulting from such participation or use.</p>
+
+        <p>TinkerMill and its respective board members, employees, volunteers, instructors, agents, contractors and officers shall not, to the extent 
+        permitted by law, be liable for, and the Member waives all right of recovery against TinkerMill and such individuals for any damage or claim 
+        with respect to any injury to person or damage to, or loss or destruction of, any property of Member, its contractors, employees and invitees
+        due to any act, omission or occurrence in or about TinkerMill or the Building. Except for gross or willful misconduct by TinkerMill, Member 
+        agrees to indemnify, defend, protect and hold TinkerMill and its respective board members, employees, volunteers, instructors, agents, 
+        contractors and officers harmless from and against all claims of whatever nature arising out of Member's use of the facilities and occupancy 
+        of TinkerMill. Members are strongly encouraged to carry insurance that covers their personal equipment while using the workspace at TinkerMill.</p>
+
+        <h3>6. Interruption of Service.</h3>
+        
+        <p>Member acknowledges that due to the imperfect nature of electronic communications, electronics and utilities, TinkerMill shall not be 
+        responsible for damages, direct or consequential, which may result from the failure of TinkerMill to furnish any of the Services. TinkerMill 
+        will, however, act in good faith and in a commercially reasonable manner in working to remedy any flaws in the facilities or equipment, 
+        or delays in providing access to the facilities or equipment to the Member.</p>
+
+        <h3>7. Relationship of the Parties.</h3>
+        
+        <p>Member is not an employee or contractor of TinkerMill. TinkerMill has no right to work produced by Members or guests working at TinkerMill. 
+        Members shall maintain all copyrights, patents and any other proprietary rights related to the Member's works that are created using the 
+        facilities.</p>
+
+        <h3>8. Partial Invalidity.</h3>
+        
+        <p>If any one or more of the provisions of this Agreement shall be invalid or unenforceable, the remainder of this Agreement shall not be 
+        affected, and each remaining provision shall be valid and enforceable to the fullest extent permitted by law.</p>
+
+        <h3>9. Waiver.</h3>
+        
+        <p>No delay or omission on the part of TinkerMill in exercising any right under this Agreement shall operate as a waiver of such right or of 
+        any other right of TinkerMill, nor shall any waiver of such right or rights on any one occasion be deemed a bar to, or waiver of, the same 
+        right or rights on any future occasion. The acceptance by TinkerMill of any payment, or of a sum less than is due, shall not be construed 
+        as a waiver of any of TinkerMill's rights unless such waiver is in writing.</p>
+
+        <h3>10. THIS AGREEMENT IS NOT A LEASE AND DOES NOT CREATE OR REFLECT ANY FORM OF TENANCY OR INTEREST IN REAL PROPERTY IN FAVOR OF MEMBER.</h3>
+        
+        <p>This agreement is subject and subordinate to a leave by and between TinkerMill and the owner of the Building. This agreement shall 
+        terminate simultaneously with the termination of said lease. This agreement shall be governed by, interpreted and enforced in accordance 
+        with the laws of the State of Colorado.</p>
+        
+        <h3>Services Addendum</h3>
+
+        <h4>Policies and Procedures</h4>
+
+        <p>TinkerMill strives to provide a safe, productive and fun work environment for its members. In light of this mission, we ask you to obey 
+        the following policies and procedures for working in our facility. Failure to obey these policies and procedures can make our facilities 
+        dangerous or unwelcoming to others, and such actions on your part may result in your license being terminated without notice. Please 
+        take them seriously.  We reserve the right to change these policies and procedures as needed with sufficient notice to members.</p>
+
+        <p><em>Individual Safety:</em> Obey all posted signs and literature pertaining to safe use of our facilities. These include but are not limited 
+        to signs regarding appropriate shop clothing and protective gear, techniques for safe equipment use, material-specific precautions for 
+        equipment, and machine tool lockouts. Do not use equipment you are not comfortable with or trained to use. Our strong preference is that 
+        you not operate heavy machinery after normal hours without a partner in the facility; operate it individually at your own risk. Default 
+        to asking for help if uncertain.</p>
+
+        <p><em>Shared Safety:</em> In a shared and open facility like ours, it is possible for less experienced members to operate equipment 
+        dangerously without knowing it. Please stay on the lookout for unsafe behavior, and approach and offer feedback to fellow members if you 
+        believe they are working unsafely. Please notify a board member, the Sergeant at Arms or the toolmaster immediately if you believe any 
+        piece of equipment or infrastructure to be unsafe.</p>
+
+        <p><em>Respectful Behavior:</em> In both in-person and electronic interactions, behave respectfully, courteously, and professionally to 
+        your fellow members. No discrimination, harassment, or hate speech shall be tolerated.</p>
+
+        <p><em>Courtesy of Individual Spaces:</em> If you are licensing space from TinkerMill, please keep the space relatively orderly. Do not 
+        enter any individual work spaces that are not yours without explicit permission.</p>
+
+        <p><em>Courtesy of Shared Spaces:</em> Keep noise levels to a respectful minimum for the comfort and enjoyment of those in the immediate area.
+        No loud music, tool use or other noise will be permitted in the open areas without the explicit permission of the members around you. No fumes 
+        or flames are permitted in unventilated areas. Restore the shared spaces to be as clean or cleaner than when you found them. Please respect 
+        and do not interrupt any official TinkerMill activities or classes in the shared spaces.</p>
+
+        <p><em>Presence:</em> Inactivity and lack of physical presence at our community facility can be detrimental to our mission and prevent others 
+        from using the space. Please inform us of any extended absences or extenuating circumstances that might prevent you from attending. Otherwise, 
+        we expect members to make regular use of our facilities.</p>
+
+        <p><em>Guests:</em> Non-member guests are permitted in TinkerMill so long as they do not use TinkerMill equipment or shared areas or interfere 
+        with other members. Guests and their actions are the sole responsibility of the host member.</p>
+
+        <p><em>Tolerance of Feedback:</em> Please be open to constructive feedback from fellow members, especially as it pertains to safe use of our 
+        equipment and disrespectful communications or behavior.</p>
+   
+
+        <h4>TinkerMill Safety and Workspace Conduct Agreement</h4>
+        
+        <p>TinkerMill is a place to learn, teach and create. We're also a community workshop with a vast array of tools you can use as a member.
+        It's important that you use the community tools in a way that's safe to yourself and others around you. Tools must be taken care of and 
+        kept them clean, functional and available for your fellow members.</p>
+        
+        <h4>TinkerMill's General Safety Rules, Guidelines &amp; Expectations</h4>
+        
+        <ul>
+            <li>All TinkerMill users must be properly certified to use any powered equipment or anything marked with a training required signage.</li>
+            <li>Guest and Minors must follow this safety agreement, and may not work at TinkerMill unattended.</li>
+            <li>If you do not know how to do something - ASK! Check with the one of the Station Masters pertaining to the task at hand or a 
+            Workspace Facilitator if you have any doubts about what you are doing.</li>
+            <li>Make proper use of available work safety equipment.</li>
+            <li>Use specific safety equipment as defined in each of the TinkerMill equipment operation and safety workshops.</li>
+            <li>Safety glasses must be worn anytime a TinkerMill user is working with powered equipment, chemicals, biological agents, 
+            electricity over 50 volts, hand tools, or is present in an active workspace containing the aforementioned safety hazards.</li>
+            <li>TinkerMill users must ensure that the relevant work area are well lit while actively working on a project.</li>
+            <li>Non-slip closed toe shoes, pants, and short sleeved shirts are recommended attire for being in the active workspace areas of 
+            TinkerMill.</li>
+            <li>All TinkerMill users must know the location and proper usage of, and make sure there is proper access to, all TinkerMill First
+            Aid and emergency safety equipment before starting any work at TinkerMill, including: Eye Wash Stations, First Aid Kits, Fire 
+            Extinguishers, Showers, Fire Alarms, Emergency Phones, Power Cutoff Switches, Power Breaker Panels.</li>
+            <li>All TinkerMill users will be expected to work at a pace that is safe for their abilities and not to cut corners.</li>
+            <li>Make it a standard practice to never work alone while using powered equipment, as it could lead to serious injury or death in the 
+            event of an emergency.</li>
+            <li>All ladders must be used in concert with a spotter to hold the base the entire time the ladder user is on the ladder.</li>
+            <li>For machine maintenance refer to the appropriate TinkerMill equipment operation and safety workshops. TinkerMill members must 
+            never perform maintenance, including cleaning of a machine that they are not certified by TinkerMill to use.</li>
+            <li>All TinkerMill users are required to be aware of their surroundings.</li>
+            <li>Make sure your work area is safe and secure at all times.</li>
+            <li>If it seems wrong it probably is wrong. Be aware of abnormal sounds, smells, heat, and vibrations coming from the machines.
+            If you suspect that there is a problem, shut down the machine immediately, lockout the machine using appropriate procedure, and 
+            notify a shop facilitator immediately.</li>
+            <li>All TinkerMill users must wear their certification badges at all time while operating powered TinkerMill equipment.</li>
+            <li>No TinkerMill user may use powered TinkerMill equipment while under the influence of or while consuming drugs or alcohol.</li>
+            <li>Failing to follow appropriate protocols as outlined in the TinkerMill equipment operation and safety workshops will result in 
+            a violation of this agreement.</li>
+            <li>Work in a proper area for your task.</li>
+            <li>An open flame may only be used outside or in designated areas marked as such.</li>
+            <li>Aerosols must only be used in well ventilated areas.</li>
+            <li>Welding must be done in a flash safe, fire safe environment.</li>
+            <li>Automotive work must be done in designated automotive areas.</li>
+        </ul>
+
+        <h4>TinkerMill Workspace Etiquette</h4>
+        
+        <p>In order to promote a safer low distraction environment, TinkerMill users will be expected to:</p>
+        
+        <ul>
+            <li>Keep unnecessary conversation to a minimum in active workspace areas.</li>
+            <li>Avoid unnecessary people loitering in an active manufacturing workspace.</li>
+            <li>Avoid leaning on the equipment, as it can lead to accidents if a TinkerMill user were to lean on a running piece of equipment 
+            by mistake.</li>
+            <li>Don't use more space then you need.</li>
+            <li>Keep a clean and organized work environment.</li>
+            <li>Any damage to machines, vises, etc., must be reported immediately.</li>
+            <li>All flammable liquids must be stored in the flammables cabinet or outside.</li>
+            <li>Materials will be stored in such a way that they cannot become tripping hazards.</li>
+            <li>All excess material will be immediately returned to its proper storage location.</li>
+            <li>Tools will always be put away when not in use. Place all scrap in scrap containers.</li>
+            <li>Oily rags need to be disposed of in specialized container.</li>
+            <li>Do not mix aluminum and steel shavings in trash. Dispose of shavings and floor sweepings in special containers only.</li>
+            <li>Keep doors to prototyping lab and metal shop closed when not in use or when other spaces have dusty work in progress.</li>
+            <li>Keep woodshop doors closed when wood shop is in use.</li>
+            <li>Spillage of oil or chemicals anywhere at TinkerMill must be addressed immediately and comprehensively. Failure to report 
+            or completely address the issues, including but not limited to enzyme cleaning, will result in suspension of shop privileges.
+            The use of drop cloths is mandatory where potential spills exists.</li>
+        </ul>
+
+        <h4>Emergency Procedure</h4>
+        
+        <p>In case of fire:</p>
+        <ol>
+            <li>Use a fire extinguisher to put out fire if it is safe to do so.</li>
+            <li>If the fire cannot safely be put out, evacuate the space, and if possible activate the fire alarm.</li>
+            <li>Call 911 once you have reached safety.</li>
+        </ol>
+        
+        <p>In case of emergencies in machining area:</p>
+        <ol>
+            <li>Hit E-stop.</li>
+            <li>Call 911 immediately.</li>
+        </ol>
+
+        <p>In case of all other emergencies, call 911 immediately!</p>
+        
+        <p><em>Failure to follow these rules and expectations may be subject to disciplinary action at the discretion of the TinkerMill Board.</em></p>
+    </div>
+    <div id="signature">
+        <h3>Signature</h3>
+
+        <p>By entering your name below, you acknowledge that you understand and agree to all stated terms and conditions in this document.</p>
+        
+        <paper-input label="Full Name" class="line required"></paper-input>
+    </div>
+    
+    <paper-button id="submit_button" raised on-tap="{{nextButton}}">Submit</paper-button>
+</template>
+
+<!-- Polymer Element Script -->
+<script>
+    Polymer( 'membership-agreement', {
+        ready: function() {
+        },
+        nextButton: function() {
+            this.fire('nextbutton', { isMinor: false });
+        }
+    });
+</script>
+</polymer-element>

@@ -1,7 +1,8 @@
 <!-- Polymer Imports -->
 <link rel="import" href="../polymer/polymer.html" />
-<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html" />
-<link rel="import" href="member-info-form.html" />
+<link rel="import" href="membership-application.html" />
+<link rel="import" href="membership-agreement.html" />
+<link rel="import" href="guardian-membership-agreement.html" />
 
 <polymer-element name="page-register">
 
@@ -9,94 +10,61 @@
 <template>
     <style>
     :host {
-      display: block;
-      position: relative;
-      background-color: white;
-      padding: 20px;
-      font-size: 1.2rem;
-      font-weight: 300;
+	    font-size: 1.2rem;
+	    font-weight: 300;
     }
     
-    label {
-        margin-right: 10px;
+    paper-button {
+        margin: 10px 0px 10px 0px;
     }
     </style>
  
-    <h2>Apply for Membership</h2>
-    
-    <label for="membership_type">Membership Type</label>
-    <paper-dropdown-menu id="membership_type" selected="Individual" valueattr="label" on-core-select="{{changedMembershipType}}">
-        <paper-item label="Individual"></paper-item>
-        <paper-item label="Family"></paper-item>
-        <paper-item label="Starving Student"></paper-item>
-    </paper-dropdown-menu>
-    
-    <div id="membership_info">
-        <p>Dues: <span id="membership_dues"></span></p>
-        <p><span id="membership_description"></span></p> 
-    </div>
-    
-    <member-info-form id="primary_member_info" primary>
-        <h3>Primary Member</h3>
-    </member-info-form>
-    
-    <div id="additional_members">
-        <h3>Additional Members</h3>
-        
-        <div id="additional_member_info"></div>
-        
-        <paper-button id="additional_member_button" on-tap="{{addMember}}">+ Add a member</paper-button>
-    </div>
-    
-    <paper-button id="next_button" raised>Next ></paper-button>
+    <div id="content">
+		<core-pages selected="0" notap id="register_pages">
+		    <section id="section_membership_application" on-nextbutton="{{nextPage}}"><membership-application></membership-application></section>
+		    <section id="section_membership_agreement" on-nextbutton="{{nextPage}}"><membership-agreement></membership-agreement></section>
+		    <section id="section_minor_membership_agreement" on-nextbutton="{{nextPage}}"><guardian-membership-agreement></guardian-membership-agreement></section>
+		    <section id="section_membership_done">Done!</section>
+		</core-pages>
+	</div>
 </template>
 
 <!-- Polymer Element Script -->
 <script>
     Polymer( 'page-register', {
         ready: function() {
+        	this.addEventListener('reset', this.reset);
         },
-        changedMembershipType: function() {
-            var menu = this.$.membership_type;
-            var dues = this.$.membership_dues;
-            var desc = this.$.membership_description;
-            var addMember = this.$.additional_members;
-            if (menu.selected == "Individual") {
-                dues.innerHTML = "$50";
-                desc.innerHTML = "Individual membership includes one person.";
-                addMember.hidden = true;
-            }
-            else if (menu.selected == "Family") {
-                dues.innerHTML = "$75";
-                desc.innerHTML = "Family membership is for multiple people in a single household.";
-                addMember.hidden = false;
-            }
-            else if (menu.selected == "Starving Student")
-            {
-                dues.innerHTML = "$25";
-                desc.innerHTML = "This membership type is only available to high school and college students.";
-                addMember.hidden = true;
-            }
-            else
-            {
-                console.log("invalid selection: ", menu.selected);
-                menu.selected = "Individual";
-            }
+        nextPage: function(e) {
+        	var pageEnum = {
+        		APPLICATION : 0,
+        		AGREEMENT : 1,
+        		MINOR_AGREEMENT : 2,
+        		DONE: 3
+        	};
+
+        	var pages = this.$.register_pages;
+        	var newPage = pages.selected;
+
+        	// Determine the new page based on the current page
+        	if (pages.selected == pageEnum.APPLICATION) {
+        		if (e.detail.isMinor) {
+        			newPage = pageEnum.MINOR_AGREEMENT;
+        		}
+        		else {
+        			newPage = pageEnum.AGREEMENT;
+        		}
+        	}
+        	else {
+        		newPage = pageEnum.DONE;
+        	}
+        	
+        	pages.selected = newPage;
         },
-        additionalMemberCount: 0,
-        addMember: function() {
-        	var memberInfo = this.$.additional_member_info;
-        	
-            // inject the new member-info-form into the DOM
-            var newMemberInfo = document.createElement("member-info-form");
-            newMemberInfo.setAttribute("id", "member_info" + this.additionalMemberCount);
-            var newMemberH3 = document.createElement("h3");
-            var newMemberTitle = document.createTextNode("Additional Member " + (this.additionalMemberCount + 1));
-            newMemberH3.appendChild(newMemberTitle);
-            newMemberInfo.appendChild(newMemberH3);
-            memberInfo.appendChild(newMemberInfo);
-        	
-        	this.additionalMemberCount++;
+        reset: function() {
+        	console.log("reset");
+            var pages = this.$.register_pages;
+            pages.selected = 0;
         }
     });
 </script>

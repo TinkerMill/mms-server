@@ -2,7 +2,7 @@
 <link rel="import" href="../paper-input/paper-input.html" />
 <link rel="import" href="../paper-toggle-button/paper-toggle-button.html" />
 
-<polymer-element name="member-info-form" attributes="primary">
+<polymer-element name="member-info-form" attributes="primary isMinor">
   <template>
     <style>
         :host {
@@ -105,13 +105,18 @@
   </template>
   <script>
   Polymer('member-info-form', {
+	  created: function() {
+	      this.addressSameAsPrimary = false;
+	      this.contactSameAsPrimary = false;
+	  },
 	  primary: { 
 		  value: false,
 		  reflect: true
 	  },
-	  isMinor: false,
-      addressSameAsPrimary: false,
-	  contactSameAsPrimary: false,
+	  isMinor: {
+		  value: false,
+		  reflect: true
+	  },
 	  toggleMinor: function() {
 	        var checkbox = this.$.minor;
             this.isMinor = checkbox.checked;
