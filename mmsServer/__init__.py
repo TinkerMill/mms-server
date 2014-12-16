@@ -1,5 +1,9 @@
 #!/usr/bin/env python
-# mms.py
+# __init__.py
+
+### IMPORTS ###
+import os
+
 
 import sys
 import os.path
@@ -9,17 +13,26 @@ import json
 
 from flask import Flask, g, render_template, request
 
-# Import all the local functions
 from createSerialNumber import createSerialNumber
 from acl import checkAcl
 from newMember import newMember
 from updateMember import updateMember
 
-# configure the app
-app = Flask("tinkermillWebApi")
+### GLOBALS ###
+# Have to setup the template directory when this is a package
+#   http://stackoverflow.com/questions/8478404/flask-doesnt-locate-template-directory-when-running-with-twisted
+templateDirectory = os.path.join( os.path.dirname( os.path.abspath(__file__)), 'templates')
+
+app = Flask( 'mmsServer', template_folder = templateDirectory)
+
 app.config.update(dict(DATABASE="tinkermill.db"))
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
+### VIEWS ###
+
+### FUNCTIONS ###
+
+### ROUTING ###
 def log(deviceId, memberId, message):
     """log access to the API. will add a timestamp to the logs
     
@@ -202,6 +215,10 @@ def index():
     return render_template('index.html')
 
 
-if __name__ == '__main__':
+### MAIN ###
+def main():
     app.run()
+
+if __name__ == '__main__':
+    main()
 
