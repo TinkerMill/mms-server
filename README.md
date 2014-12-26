@@ -10,11 +10,20 @@ User stories for the Member Maangment System are being kept on www.storiesonboar
 
 If you need access, contact David Robinson at davidrobertrobinson@gmail.com
 
+Vagrant Installation
+--------------------
+* checkout the source
+* vagrant up
+* vagrant ssh
+* cd /vagrant
+* run the server
+* when you are finished (save) logout and run: vagrant destroy 
+
 Installation
 ------------
 
 1. Install a database engine.  We're using MariaDB ( a MySQL replacement) here at TinkerMill.
- * `apt-get install mariadb-server`
+ * `apt-get install mariadb-server python-mysqldb`
 
 1. Load the schema into the database.
 
