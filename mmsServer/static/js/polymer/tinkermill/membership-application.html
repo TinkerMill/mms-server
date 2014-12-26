@@ -52,6 +52,7 @@
 <script>
     Polymer( 'membership-application', {
         ready: function() {
+        	this.addEventListener('removeMember', this.removeMember);
         },
         created: function() {
             this.additionalMemberCount = 0;
@@ -74,7 +75,7 @@
             else if (menu.selected == "Starving Student")
             {
                 dues.innerHTML = "$25";
-                desc.innerHTML = "This membership type is only available to high school and college students.";
+                desc.innerHTML = "This membership type is for high school and college students, and other folks low on cash.";
                 addMember.hidden = true;
             }
             else
@@ -97,7 +98,14 @@
             
             this.additionalMemberCount++;
         },
+        removeMember: function(e) {
+        	var memberInfoId = e.detail.memberInfoId;
+        	var element = this.shadowRoot.querySelector("#" + memberInfoId);
+        	element.parentNode.removeChild(element);
+        	
+        },
         nextButton: function() {
+        	// TODO: verify all required fields filled
         	this.fire('nextbutton', { isMinor: this.$.primary_member_info.isMinor });
         }
     });

@@ -12,6 +12,11 @@
         
         #member_title h3 {
             font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        #remove_button {
+            margin: 10px 20px;
         }
         
         #member_info {
@@ -43,9 +48,10 @@
             width: 30%;
         }
     </style>
-
+    
     <div id="member_title" layout horizontal center>
         <content select="h3"></content>
+        <paper-button id="remove_button" raised on-tap="{{remove}}" hidden?="{{primary == false}}">- Remove Member</paper-button>
     </div>
     
     <label for="minor">Under 18?</label>
@@ -105,7 +111,10 @@
   </template>
   <script>
   Polymer('member-info-form', {
+	  ready: function() {
+      },
 	  created: function() {
+		  this.isMinor = false;
 	      this.addressSameAsPrimary = false;
 	      this.contactSameAsPrimary = false;
 	  },
@@ -118,10 +127,10 @@
 		  reflect: true
 	  },
 	  toggleMinor: function() {
-	        var checkbox = this.$.minor;
-            this.isMinor = checkbox.checked;
-	        var guardianInfo = this.$.guardian;
-	        guardianInfo.hidden = !this.isMinor;
+		  var checkbox = this.$.minor;
+		  this.isMinor = checkbox.checked;
+		  var guardianInfo = this.$.guardian;
+		  guardianInfo.hidden = !this.isMinor;
 	  },
 	  toggleContactSameAsPrimary: function() {
 		  var checkbox = this.$.contact_primary;
@@ -134,6 +143,9 @@
           this.addressSameAsPrimary = checkbox.checked;
           var addrDiv = this.$.address;
           addrDiv.hidden = this.addressSameAsPrimary;
+      },
+      remove: function() {
+    	  this.fire('removeMember', { memberInfoId: this.id });
       }
   });
   </script>

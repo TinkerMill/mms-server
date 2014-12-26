@@ -242,7 +242,7 @@
 
         <p>By entering your name below, you acknowledge that you understand and agree to all stated terms and conditions in this document.</p>
         
-        <paper-input label="Full Name" class="line required"></paper-input>
+        <paper-input id="signature_input" label="Full Name" class="line required"></paper-input>
     </div>
     
     <paper-button id="submit_button" raised on-tap="{{nextButton}}">Submit</paper-button>
@@ -254,6 +254,7 @@
         ready: function() {
         },
         nextButton: function() {
+        	// TODO: verify signature
             this.fire('nextbutton', { isMinor: false });
         }
     });

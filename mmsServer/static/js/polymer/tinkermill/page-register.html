@@ -60,11 +60,14 @@
         	}
         	
         	pages.selected = newPage;
+        	// TODO: scroll to top
         },
         reset: function() {
-        	console.log("reset");
             var pages = this.$.register_pages;
             pages.selected = 0;
+            
+            // TODO: clear all data in the form
+            // TODO: scroll to top
         }
     });
 </script>
